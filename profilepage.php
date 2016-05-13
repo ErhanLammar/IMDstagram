@@ -24,6 +24,7 @@
 
     <!-- Custom CSS -->
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,12 +54,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="nav-profilepic pull-left" href="profilepage.php"><img src="http://placehold.it/30x30"> </a>
+                    <a class="nav-profilepic pull-left" href="#"><img src="http://placehold.it/30x30"> </a>
                     <div class="btn-group">
                         <button type="button" class="dropdown-toggle menuke" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="profilepage.php">Mijn Profiel</a></li>
+                            <li><a href="#">Mijn Profiel</a></li>
                             <li><a href="#uploadbox" data-toggle="modal">Upload foto</a></li>
 
                             <li role="separator" class="divider"></li>
@@ -89,8 +90,10 @@
     <div class="row">
 
         <div class="col-lg-12">
-            <h1 class="page-header">Latest Posts</h1>
+            <img class="profilepicpage pull-left" src="http://placehold.it/80x80"><h1 class="page-header">@BryanVerli</h1>
         </div>
+        
+         <div class="col-lg-12"><btn class="btn btn-primary">Volgen</btn></div>
 
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
             <a class="thumbnail" href="#instagramfoto" data-toggle="modal">
@@ -99,6 +102,7 @@
         </div>
 
     </div>
+   
 
     <hr>
 

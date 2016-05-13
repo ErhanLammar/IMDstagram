@@ -1,6 +1,17 @@
 <?php
-    include_once("classes/User.class.php");
+    if(!empty($_POST)){
+        $conn = new mysqli("localhost", "root", "", "IMDstagram");
 
+        $username = $_POST['form-username'];
+        $option =['cost' => 12];
+
+        $password = password_hash($_POST['form-password'], PASSWORD_DEFAULT, $options);
+        $query = "INSERT INTO users (username, password) VALUES('.$this->$conn->real_escape_strin($username).', '$password')";
+
+        if($conn->query($query)){
+            $succes = "succesvol ingelogd";
+        }
+    }
     
 ?><!DOCTYPE html>
 <html lang="en">

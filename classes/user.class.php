@@ -135,7 +135,7 @@ class User{
         $statement->bindValue(":password", $this->m_sPassword);
         return $statement->execute();
     }
-    public function loggingIn(){
+    /*public function loggingIn(){
         if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
             $PDO = Db::getInstance();
             $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username");
@@ -155,5 +155,5 @@ class User{
                 }
             }
         }
-    }
+    }*/
 }

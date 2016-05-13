@@ -18,10 +18,10 @@ if(isset($_POST['register'])){
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->signup();
-        $registerfeedback= "je kan nu inloggen";
+        $succes= "je kan nu <a href='login.php'>inloggen</a>";
     }
     catch(exception $e){
-        $registerfeedback = $e->getMessage();
+        $succes = $e->getMessage();
     }
 }
 ?><!DOCTYPE html>
@@ -68,11 +68,12 @@ if(isset($_POST['register'])){
                 <div class="col-sm-8 col-sm-offset-2 text">
                     <h1><strong>IMDstagram</strong> registreer pagina</h1>
                 </div>
-                <?php if(isset($registerfeedback)):?>
-                <div class="col-sm-8 text-center">
-                    Niet alle velden zijn ingevuld.
+                <div class="form-control-feedback">
+                <?php if(isset($succes)) {
+                    echo "<p> $succes</p>";
+                }
+                ?>
                 </div>
-                <?php endif;?>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 form-box">

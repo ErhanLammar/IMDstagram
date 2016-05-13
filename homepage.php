@@ -59,7 +59,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#">Mijn Profiel</a></li>
-                            <li><a href="#">Upload foto</a></li>
+                            <li><a href="#uploadbox" data-toggle="modal">Upload foto</a></li>
 
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Uitloggen</a></li>
@@ -119,7 +119,33 @@
 
 </div>
 <!-- /.container -->
+<div class="modal fade" id="uploadbox" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Upload je foto</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
 
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Beschrijving</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="beschrijving..." name="beschrijving"/>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputFile">Profile picture</label>
+            <input type="file" class="form-control" id="exampleInputFile" name="vraag_picture">
+        </div>
+
+        <button type="submit" class="btn btn-default">Upload</button>
+
+    </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 

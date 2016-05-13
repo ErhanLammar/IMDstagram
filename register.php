@@ -18,7 +18,7 @@ if(isset($_POST['register'])){
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->signup();
-        $succes= "je kan nu <a href='login.php'>inloggen</a>";
+        $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='login.php'>login</a> pagina";
     }
     catch(exception $e){
         $succes = $e->getMessage();

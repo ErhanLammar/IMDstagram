@@ -18,6 +18,7 @@ if(isset($_POST['register'])){
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->signup();
+        //$u->checkEmail();
         $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='login.php'>login</a> pagina";
     }
     catch(exception $e){
@@ -68,7 +69,7 @@ if(isset($_POST['register'])){
                 <div class="col-sm-8 col-sm-offset-2 text">
                     <h1><strong>IMDstagram</strong> registreer pagina</h1>
                 </div>
-                <div class="col-sm-8 col-sm-offset-2 form-control">
+                <div class="col-sm-8 col-sm-offset-2 alert  alert-success">
                 <?php if(isset($succes)) {
                     echo "<p> $succes</p>";
                 }

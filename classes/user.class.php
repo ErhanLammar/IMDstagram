@@ -135,6 +135,16 @@ class User{
         $statement->bindValue(":password", $this->m_sPassword);
         return $statement->execute();
     }
+
+    /*public function checkEmail(){
+        $query = "SELECT count(email) FROM users WHERE email='$this->m_sEmail'" ;
+
+        $result = mysqli_result(mysqli_query($query),0) ;
+
+        if( $result > 0 ){
+            die( "Dit emailadres is al in gebruik!!" ) ;
+        }
+    }*/
     /*public function loggingIn(){
         if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
             $PDO = Db::getInstance();

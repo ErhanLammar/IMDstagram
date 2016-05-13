@@ -68,7 +68,7 @@ if(isset($_POST['register'])){
                 <div class="col-sm-8 col-sm-offset-2 text">
                     <h1><strong>IMDstagram</strong> registreer pagina</h1>
                 </div>
-                <div class="form-control-feedback">
+                <div class="col-sm-8 col-sm-offset-2 form-control">
                 <?php if(isset($succes)) {
                     echo "<p> $succes</p>";
                 }

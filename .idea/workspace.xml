@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6479e06f-2bba-4b34-9741-1787e79b043f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/sessions.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/config.class.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/sessions.class.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editprofile.php" afterPath="$PROJECT_DIR$/editprofile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage.php" afterPath="$PROJECT_DIR$/homepage.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logout.php" afterPath="$PROJECT_DIR$/logout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/profilepage.php" afterPath="$PROJECT_DIR$/profilepage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/register.php" afterPath="$PROJECT_DIR$/register.php" />
     </list>
     <ignored path="IMDstagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,24 +77,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="150">
+              <caret line="10" column="96" selection-start-line="10" selection-start-column="96" selection-end-line="10" selection-end-column="96" />
+              <folding>
+                <marker date="1463214285000" expanded="true" signature="293:366" placeholder="SELECT * FRO... users" />
+                <marker date="1463214285000" expanded="true" signature="409:452" placeholder="SELECT usern... users" />
+                <marker date="1463214285000" expanded="true" signature="409:453" placeholder="SELECT usern... users" />
+                <marker date="1463214285000" expanded="true" signature="409:464" placeholder="SELECT usern... users" />
+                <marker date="1463214285000" expanded="true" signature="409:466" placeholder="SELECT usern... users" />
+                <marker date="1463214285000" expanded="true" signature="924:944" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="1698:1898" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2464:5297" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2512:5290" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2540:4963" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2572:4955" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2602:2775" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2662:2756" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2805:4510" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2869:4491" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2912:3230" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="2964:3065" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="3118:3203" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="3276:4194" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="3362:4167" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="3415:3701" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="3754:4040" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="4240:4468" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="4268:4441" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="4540:4944" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="4608:4929" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="4710:4910" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="4790:4887" placeholder="..." />
+                <marker date="1463214285000" expanded="true" signature="5213:5286" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions.class.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/classes/sessions.class.php">
+      <file leaf-file-name="config.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/config.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-              <folding>
-                <marker date="1463208969000" expanded="true" signature="199:251" placeholder="SELECT usern... users" />
-              </folding>
+            <state relative-caret-position="240">
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,6 +175,7 @@
         <option value="$PROJECT_DIR$/classes/sessions.class.php" />
         <option value="$PROJECT_DIR$/classes/login.class.php" />
         <option value="$PROJECT_DIR$/logout.php" />
+        <option value="$PROJECT_DIR$/classes/config.class.php" />
         <option value="$PROJECT_DIR$/login.php" />
       </list>
     </option>
@@ -274,6 +299,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6479e06f-2bba-4b34-9741-1787e79b043f" name="Default" comment="" />
@@ -282,12 +310,12 @@
       <option name="presentableId" value="Default" />
       <updated>1463122768621</updated>
       <workItem from="1463122774621" duration="5878000" />
-      <workItem from="1463207150662" duration="3163000" />
+      <workItem from="1463207150662" duration="5774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9041000" />
+    <option name="totallyTimeSpent" value="11652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="495" y="23" width="1425" height="984" extended-state="0" />
@@ -416,20 +444,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
+    <entry file="file://$PROJECT_DIR$/classes/sessions.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+        <state relative-caret-position="0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="17" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/sessions.class.php">
+    <entry file="file://$PROJECT_DIR$/classes/config.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        <state relative-caret-position="240">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="96" selection-start-line="10" selection-start-column="96" selection-end-line="10" selection-end-column="96" />
           <folding>
-            <marker date="1463208969000" expanded="true" signature="199:251" placeholder="SELECT usern... users" />
+            <marker date="1463214285000" expanded="true" signature="293:366" placeholder="SELECT * FRO... users" />
+            <marker date="1463214285000" expanded="true" signature="409:452" placeholder="SELECT usern... users" />
+            <marker date="1463214285000" expanded="true" signature="409:453" placeholder="SELECT usern... users" />
+            <marker date="1463214285000" expanded="true" signature="409:464" placeholder="SELECT usern... users" />
+            <marker date="1463214285000" expanded="true" signature="409:466" placeholder="SELECT usern... users" />
+            <marker date="1463214285000" expanded="true" signature="924:944" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="1698:1898" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2464:5297" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2512:5290" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2540:4963" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2572:4955" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2602:2775" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2662:2756" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2805:4510" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2869:4491" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2912:3230" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="2964:3065" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="3118:3203" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="3276:4194" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="3362:4167" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="3415:3701" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="3754:4040" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="4240:4468" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="4268:4441" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="4540:4944" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="4608:4929" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="4710:4910" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="4790:4887" placeholder="..." />
+            <marker date="1463214285000" expanded="true" signature="5213:5286" placeholder="..." />
           </folding>
         </state>
       </provider>

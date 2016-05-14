@@ -1,13 +1,28 @@
 <?php
 include_once ("classes/Db.class.php");
-if(empty($_SESSION)){
+include_once ("classes/config.class.php");
+
     session_start();
-} // session nog niet gestart
-if(isset($_SESSION['login_username'])) { // all ingelogd
-    header("location: homepage.php"); // sturen naar homepagina
-    exit;
+    if(isset($_POST['form-username']) && isset($_POST['form-password'])){
+        $username = $_POST['form-username'];
+        $password = $_POST['form-password'];
+
+        $query = "SELECT * FROM `users` WHERE username='$username' and password='$password'";
+        $result = mysqli_query($query, "SELECT username FROM users WHERE username = '$username'") or die;
+        $count = mysql_num_rows($result);
+
+        if($count == 1){
+            $_SESSION['username'] = $username;
+        } else{
+            echo "username of wachtwoord is niet correct ingevoerd";
+        }
+        if(isset($_SESSION['username'])){
+            $username = $_SESSION['username'];
+            echo "welkom" . $username;
+            echo "<a href='logout.php'>Logout</a>";
+        }
 }
-?>
+
     
 ?><!DOCTYPE html>
 <html lang="en">

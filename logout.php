@@ -5,12 +5,19 @@
  * Date: 23/04/16
  * Time: 11:00
  */
-require('include/config.php');
+include_once ("classes/user.class.php");
+include_once ("classes/Db.class.php");
+
 
 //logout
-$user->logout();
+session_start();
+if(session_destroy())
+{
+    //logged in return to index page
+    header("Location: login.php");
+}
 
-//logged in return to index page
-header('Location: login.php');
+
+
 exit;
 ?>

@@ -54,22 +54,20 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="nav-profilepic pull-left" href="#"><img src="http://placehold.it/30x30"> </a>
+                    <a class="nav-profilepic pull-left" href="profilepage.php"><img src="http://placehold.it/30x30"> </a>
                     <div class="btn-group">
                         <button type="button" class="dropdown-toggle menuke" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Mijn Profiel</a></li>
-                            <li><a href="#uploadbox" data-toggle="modal">Upload foto</a></li>
-
+                            <li><a href="profilepage.php">Mijn Profiel</a></li>
+                            <li><a href="uploadbox" data-toggle="modal">Upload foto</a></li>
+                            <li><a href="editprofile.php">Bewerk persoonlijke gegevens</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Uitloggen</a></li>
+                            <li><a href="logout.php">Uitloggen</a></li>
                         </ul>
                     </div>
 
                 </li>
-
-
             </ul>
             <div class="col-sm-3 col-md-3">
                 <form class="navbar-form" role="search">

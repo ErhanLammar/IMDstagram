@@ -17,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thumbnail Gallery - Start Bootstrap Template</title>
+    <title>Homepagina</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -60,9 +60,9 @@
                         <ul class="dropdown-menu">
                             <li><a href="profilepage.php">Mijn Profiel</a></li>
                             <li><a href="#uploadbox" data-toggle="modal">Upload foto</a></li>
-
+                            <li><a href="editprofile.php">Bewerk persoonlijke gegevens</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Uitloggen</a></li>
+                            <li><a href="logout.php">Uitloggen</a></li>
                         </ul>
                     </div>
 

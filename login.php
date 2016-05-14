@@ -1,17 +1,13 @@
 <?php
-    if(!empty($_POST)){
-        $conn = new mysqli("localhost", "root", "", "IMDstagram");
-
-        $username = $_POST['form-username'];
-        $option =['cost' => 12];
-
-        $password = password_hash($_POST['form-password'], PASSWORD_DEFAULT, $options);
-        $query = "INSERT INTO users (username, password) VALUES('.$this->$conn->real_escape_strin($username).', '$password')";
-
-        if($conn->query($query)){
-            $succes = "succesvol ingelogd";
-        }
-    }
+include_once ("classes/Db.class.php");
+if(empty($_SESSION)){
+    session_start();
+} // session nog niet gestart
+if(isset($_SESSION['login_username'])) { // all ingelogd
+    header("location: homepage.php"); // sturen naar homepagina
+    exit;
+}
+?>
     
 ?><!DOCTYPE html>
 <html lang="en">
@@ -79,7 +75,7 @@
                                 <label class="sr-only" for="form-password">Password</label>
                                 <input type="password" name="form-password" placeholder="wachtwoord..." class="form-password form-control" id="form-password">
                             </div>
-                            <button type="submit" class="btn">Inloggen!</button>
+                            <button type="submit" name="submit" class="btn">Inloggen!</button>
                         </form>
                     </div>
                     <div class="description">

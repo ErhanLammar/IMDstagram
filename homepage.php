@@ -7,10 +7,10 @@
  */
 
 session_start();
-if(!isset($_SESSION['loggedIn'])){
+/*if(!isset($_SESSION['loggedIn'])){
     //echo("not set");
     header("Location:Login.php");
-}
+}*/
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -173,3 +173,4 @@ if(!isset($_SESSION['loggedIn'])){
 </body>
 
 </html>
+

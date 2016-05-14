@@ -145,7 +145,7 @@ class User{
             die( "Dit emailadres is al in gebruik!!" ) ;
         }
     }*/
-    /*public function loggingIn(){
+    public function loggingIn(){
         if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
             $PDO = Db::getInstance();
             $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username");
@@ -158,12 +158,14 @@ class User{
                 $hash = $result['password'];
 
                 if(password_verify($password, $hash)){
-                    $this->CreateSession($result['userid']);
+                    session_start();
+                    $_SESSION["loggedIn"] = $result['userid'];
+                    session_write_close();
                     return true;
                 }else{
                     return false;
                 }
             }
         }
-    }*/
+    }
 }

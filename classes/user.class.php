@@ -5,12 +5,13 @@
  * Date: 23/04/16
  * Time: 10:13
  */
+
+include_once("Db.class.php");
+
 class User{
 
-    private $_db;
-
     // todo: 1 private variabelen aanmaken voor firstname, lastname, ...
-
+    private $_db;
     private $m_sUsername;
     private $m_sFirstname;
     private $m_sLastname;
@@ -105,13 +106,12 @@ class User{
 
 
     public function signup(){
-        if(!$this->checkPasswordConfirmation()){
-            throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
-        }
         if(!$this->checkEmail()){
             throw new exception("Email is al geregistreerd");
         }
-
+        if(!$this->checkPasswordConfirmation()){
+            throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
+        }
         $conn = new PDO("mysql:host=localhost;dbname=IMDstagram", "root","");
         $options= ['cost' => 12];
         $this->m_sPassword = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);

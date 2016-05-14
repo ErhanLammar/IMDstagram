@@ -142,7 +142,7 @@ class User{
     public function checkEmail(){
 
         $PDO = Db::getInstance();
-        $stmt = $PDO->prepare("SELECT count(email) FROM users WHERE email= :email");
+        $stmt = $PDO->prepare("SELECT * FROM users WHERE email= :email");
         $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR);
         $stmt->execute();
 

@@ -5,8 +5,10 @@
  * Date: 23/04/16
  * Time: 09:31
  */
+
 session_start();
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['loggedIn'])){
+    //echo("not set");
     header("Location:Login.php");
 }
 

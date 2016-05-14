@@ -1,5 +1,7 @@
 <?php
-include_once("classes/User.class.php");
+include_once ("classes/Db.class.php");
+include_once ("classes/config.class.php");
+include_once ("classes/user.class.php");
 //require('include/config.php');
 
 //if logged in redirect to members page

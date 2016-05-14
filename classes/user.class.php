@@ -108,7 +108,6 @@ class User{
         if(!$this->checkPasswordConfirmation()){
             throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
         }
-        // INSERT QUERY
         if(!$this->checkEmail()){
             throw new exception("Email is al geregistreerd");
         }
@@ -182,7 +181,7 @@ class User{
         }
     }
 
-    public function Update(){
+    /*public function Update(){
 
         $PDO = Db::getInstance();
 
@@ -222,6 +221,6 @@ class User{
         $stmt->execute();
 
 
-    }
+    }*/
 
 }

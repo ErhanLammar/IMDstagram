@@ -109,6 +109,9 @@ class User{
             throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
         }
         // INSERT QUERY
+        if(!$this->checkEmail()){
+            throw new exception("Email is al geregistreerd");
+        }
 
         $conn = new PDO("mysql:host=localhost;dbname=IMDstagram", "root","");
         $options= ['cost' => 12];
@@ -134,17 +137,27 @@ class User{
         $statement->bindValue(":email", $this->m_sEmail);
         $statement->bindValue(":password", $this->m_sPassword);
         return $statement->execute();
+
     }
 
-    /*public function checkEmail(){
-        $query = "SELECT count(email) FROM users WHERE email='$this->m_sEmail'" ;
+    public function checkEmail(){
 
-        $result = mysqli_result(mysqli_query($query),0) ;
+        $PDO = Db::getInstance();
+        $stmt = $PDO->prepare("SELECT count(email) FROM users WHERE email= :email");
+        $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR);
+        $stmt->execute();
 
-        if( $result > 0 ){
-            die( "Dit emailadres is al in gebruik!!" ) ;
+        if( $stmt->rowCount() > 0 ){
+            return false;
+            throw new exception( "Dit emailadres is al in gebruik!!" ) ;
         }
-    }*/
+        else{
+
+            return true;
+
+        }
+    }
+
     public function loggingIn(){
         if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
             $PDO = Db::getInstance();
@@ -168,4 +181,47 @@ class User{
             }
         }
     }
+
+    public function Update(){
+
+        $PDO = Db::getInstance();
+
+        if(!empty($this->m_sUsername) && !empty($this->m_sPassword) ){
+
+            if(!$this->checkPasswordConfirmation()){
+                throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
+            }
+
+            $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username"); //update beide velden met where m_sUserid = Userid
+            $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR); //2 velden geven
+            $stmt->bindValue(":password", $this->m_sUsername, PDO::PARAM_STR);
+
+        }
+        elseif (!empty($this->m_sUsername)){
+
+            $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username"); //update username met " " "
+            $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR); //aleen username
+
+        }
+        elseif (!empty($this->m_sPassword)){
+
+            if(!$this->checkPasswordConfirmation()){
+                throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
+            }
+
+            $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username"); //update password met " " "
+            $stmt->bindValue(":password", $this->m_sUsername, PDO::PARAM_STR); //aleen u password
+
+        }
+        else{
+
+            //geen van beide ingevuld!
+
+        }
+
+        $stmt->execute();
+
+
+    }
+
 }

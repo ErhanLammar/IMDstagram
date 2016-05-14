@@ -6,7 +6,7 @@
  * Time: 09:31
  */
 session_start();
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['loggedIn'])){
     header("Location:Login.php");
 }
 ?>

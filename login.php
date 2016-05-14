@@ -1,28 +1,35 @@
 <?php
 include_once ("classes/Db.class.php");
 include_once ("classes/config.class.php");
+include_once ("classes/user.class.php");
+session_start();
+if(isset($_POST['login'])){
 
-    /*session_start();
-    if(isset($_POST['form-username']) && isset($_POST['form-password'])){
-        $username = $_POST['form-username'];
-        $password = $_POST['form-password'];
+    // todo: 1 form input velden ophalen
+    try{
 
-        $query = "SELECT * FROM `users` WHERE username='$username' and password='$password'";
-        $result = mysqli_query($query, "SELECT username FROM users WHERE username = '$username'") or die;
-        $count = mysql_num_rows($result);
+        $u = new User();
 
-        if($count == 1){
-            $_SESSION['username'] = $username;
-        } else{
-            echo "username of wachtwoord is niet correct ingevoerd";
+        $u->Username = $_POST['form-username'];
+        $u->Password = $_POST['form-password'];
+
+        if($u->loggingIn() == true){
+
+            header("Location:homepage.php");
+            EXIT;
+
         }
-        if(isset($_SESSION['username'])){
-            $username = $_SESSION['username'];
-            echo "welkom" . $username;
-            echo "<a href='logout.php'>Logout</a>";
-        }
-}*/
+        else{
 
+            echo("Password of username zijn niet correct!");
+
+        }
+
+    }
+    catch(exception $e){
+        $succes = $e->getMessage();
+    }
+}
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -90,7 +97,7 @@ include_once ("classes/config.class.php");
                                 <label class="sr-only" for="form-password">Password</label>
                                 <input type="password" name="form-password" placeholder="wachtwoord..." class="form-password form-control" id="form-password">
                             </div>
-                            <button type="submit" name="submit" class="btn">Inloggen!</button>
+                            <button type="submit" name="login" class="btn" >Inloggen!</button>
                         </form>
                     </div>
                     <div class="description">

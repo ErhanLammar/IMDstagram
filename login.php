@@ -2,7 +2,7 @@
 include_once ("classes/Db.class.php");
 include_once ("classes/config.class.php");
 
-    session_start();
+    /*session_start();
     if(isset($_POST['form-username']) && isset($_POST['form-password'])){
         $username = $_POST['form-username'];
         $password = $_POST['form-password'];
@@ -21,9 +21,9 @@ include_once ("classes/config.class.php");
             echo "welkom" . $username;
             echo "<a href='logout.php'>Logout</a>";
         }
-}
+}*/
 
-    
+
 ?><!DOCTYPE html>
 <html lang="en">
 

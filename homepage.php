@@ -5,8 +5,12 @@
  * Date: 23/04/16
  * Time: 09:31
  */
-?>
-<!DOCTYPE html>
+session_start();
+if(!isset($_SESSION['username'])){
+    header("Location:Login.php");
+}
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

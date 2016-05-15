@@ -3,34 +3,28 @@ include_once ("classes/Db.class.php");
 include_once ("classes/config.class.php");
 include_once ("classes/user.class.php");
 session_start();
+if( $users->loggingIn() ){ header('Location: homepage.php'); }
+    
 if(isset($_POST['login'])){
-
     // todo: 1 form input velden ophalen
     try{
-
         $u = new User();
 
         $u->Username = $_POST['form-username'];
         $u->Password = $_POST['form-password'];
 
         if($u->loggingIn() == true){
-
             header("Location:homepage.php");
-            EXIT;
-
+            
         }
         else{
-
             echo("Password of username zijn niet correct!");
-
         }
-
     }
     catch(exception $e){
         $succes = $e->getMessage();
     }
 }
-
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -115,23 +109,23 @@ if(isset($_POST['login'])){
                         <a class="btn btn-link-1 btn-link-1-facebook" href="#">
                             <i class="fa fa-facebook"></i> Facebook
                         </a>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
 
+    <!-- Javascript -->
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.backstretch.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
 
-<!-- Javascript -->
-<script src="assets/js/jquery-1.11.1.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.backstretch.min.js"></script>
-<script src="assets/js/scripts.js"></script>
-
-<!--[if lt IE 10]>
-<script src="assets/js/placeholder.js"></script>
-<![endif]-->
+    <!--[if lt IE 10]>
+    <script src="assets/js/placeholder.js"></script>
+    <![endif]-->
 
 </body>
 

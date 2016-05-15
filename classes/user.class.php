@@ -173,6 +173,7 @@ class User{
                 if(password_verify($password, $hash)){
                     session_start();
                     $_SESSION["loggedIn"] = $result['usersid'];
+                    $_SESSION["loggedIn"] = $result ['username'];
                     session_write_close();
                     return true;
                 }else{
@@ -181,6 +182,7 @@ class User{
             }
         }
     }
+
 
     public function Update($userid){
 

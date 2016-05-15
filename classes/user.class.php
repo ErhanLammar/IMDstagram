@@ -18,6 +18,7 @@ class User{
     private $m_sEmail;
     private $m_sPassword;
     private $m_sPasswordconfirmation;
+    //private $m_susersid;
 
     // todo: 2 getters & setters!
 
@@ -181,54 +182,49 @@ class User{
         }
     }
 
-    /*public function Update(){
+    public function Update($userid){
 
         $PDO = Db::getInstance();
 
-        if(!empty($this->m_sUsername) && !empty($this->m_sPassword) && !empty($this->m_sEmail)){
+        if(!empty($this->m_sUsername)){
+
+            $stmt = $PDO->prepare("UPDATE users SET username= :username  WHERE usersid = :usersid");
+            $stmt->bindValue(":usersid", $userid, PDO::PARAM_INT );//update velden velden met where m_sUserid = Userid
+            $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR);
+            $stmt->execute();
+            echo("username");
+
+        }
+
+        if (!empty($this->m_sEmail)){
 
             if(!$this->checkPasswordConfirmation()){
-                throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
+                throw new exception("De update is niet correct verlopen. Check alles nog eens");
             }
 
-            $stmt = $PDO->prepare("UPDATE username, email, password FROM users WHERE username = :username, email = :email, password =:password"); //update velden velden met where m_sUserid = Userid
-            $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR); //2 velden geven
-            $stmt->bindValue(":password", $this->m_sPassword, PDO::PARAM_STR);
-            $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR);
-
-        }
-        elseif (!empty($this->m_sUsername)){
-
-            $stmt = $PDO->prepare("UPDATE * FROM users SET username = :username WHERE usersid = :usersid"); //update username met " " "
-            $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR); //aleen username
-
-        }
-        elseif (!empty($this->m_sEmail)){
-
-            $stmt = $PDO->prepare("SELECT * FROM users WHERE email = :email"); //update username met " " "
+            $stmt = $PDO->prepare("UPDATE users SET email= :email WHERE usersid = :usersid");
+            $stmt->bindValue(":usersid", $userid, PDO::PARAM_INT );//update username met " " "
             $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR); //aleen email
+            $stmt->execute();
+            echo("email");
 
         }
-        elseif (!empty($this->m_sPassword)){
+        if (!empty($this->m_sPassword)){
 
             if(!$this->checkPasswordConfirmation()){
-                throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
+                throw new exception("de update lukt niet, beide passwoorden komen niet overeen.");
             }
 
-            $stmt = $PDO->prepare("UPDATE * FROM users WHERE password = :password"); //update password met " " "
+            $stmt = $PDO->prepare("UPDATE users Set password = :password WHERE usersid = :usersid");
+            $stmt->bindValue(":usersid", $userid, PDO::PARAM_INT );//update password met " " "
             $stmt->bindValue(":password", $this->m_sPassword, PDO::PARAM_STR); //aleen u password
-
-        }
-        else{
-
-            //geen velden ingevuld!
-            echo "geen velden ingevuld
+            $stmt->execute();
 
         }
 
-        $stmt->execute();
 
 
-    }*/
+
+    }
 
 }

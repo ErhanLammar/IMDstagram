@@ -171,7 +171,7 @@ class User{
 
                 if(password_verify($password, $hash)){
                     session_start();
-                    $_SESSION["loggedIn"] = $result['userid'];
+                    $_SESSION["loggedIn"] = $result['usersid'];
                     session_write_close();
                     return true;
                 }else{
@@ -185,21 +185,28 @@ class User{
 
         $PDO = Db::getInstance();
 
-        if(!empty($this->m_sUsername) && !empty($this->m_sPassword) ){
+        if(!empty($this->m_sUsername) && !empty($this->m_sPassword) && !empty($this->m_sEmail)){
 
             if(!$this->checkPasswordConfirmation()){
                 throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
             }
 
-            $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username"); //update beide velden met where m_sUserid = Userid
+            $stmt = $PDO->prepare("UPDATE username, email, password FROM users WHERE username = :username, email = :email, password =:password"); //update velden velden met where m_sUserid = Userid
             $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR); //2 velden geven
-            $stmt->bindValue(":password", $this->m_sUsername, PDO::PARAM_STR);
+            $stmt->bindValue(":password", $this->m_sPassword, PDO::PARAM_STR);
+            $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR);
 
         }
         elseif (!empty($this->m_sUsername)){
 
-            $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username"); //update username met " " "
+            $stmt = $PDO->prepare("UPDATE * FROM users SET username = :username WHERE usersid = :usersid"); //update username met " " "
             $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR); //aleen username
+
+        }
+        elseif (!empty($this->m_sEmail)){
+
+            $stmt = $PDO->prepare("SELECT * FROM users WHERE email = :email"); //update username met " " "
+            $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR); //aleen email
 
         }
         elseif (!empty($this->m_sPassword)){
@@ -208,13 +215,14 @@ class User{
                 throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
             }
 
-            $stmt = $PDO->prepare("SELECT * FROM users WHERE username = :username"); //update password met " " "
-            $stmt->bindValue(":password", $this->m_sUsername, PDO::PARAM_STR); //aleen u password
+            $stmt = $PDO->prepare("UPDATE * FROM users WHERE password = :password"); //update password met " " "
+            $stmt->bindValue(":password", $this->m_sPassword, PDO::PARAM_STR); //aleen u password
 
         }
         else{
 
-            //geen van beide ingevuld!
+            //geen velden ingevuld!
+            echo "geen velden ingevuld
 
         }
 

@@ -15,7 +15,7 @@ if(!isset($_SESSION['loggedIn'])){
 }
 
 if(!empty($_POST['change'])){
-    
+
     // todo: 1 form input velden ophalen
     try{
 
@@ -25,7 +25,7 @@ if(!empty($_POST['change'])){
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->Update($_SESSION['loggedIn']);
-        $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='login.php'>login</a> pagina";
+        $succes= "Je gegevens zijn aangepast";
     }
     catch(exception $e){
         $succes = $e->getMessage();
@@ -126,44 +126,34 @@ if(!empty($_POST['change'])){
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
             <div class="alert alert-info alert-dismissable">
-                <a class="panel-close close" data-dismiss="alert">×</a>
-                <i class="fa fa-coffee"></i>
-                This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                <?php if(isset($succes)) {
+                    echo "<p> $succes</p>";
+                }
+                ?>
             </div>
             <h3>Bewerk je persoonlijke gegevens</h3>
 
-            <form role="form" action="" method="post" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Gebruikersnaam:</label>
-                    <div class="col-md-8">
-                        <input class="form-control" name="form-username" type="text" value="verander je gebruikersnaam">
+            <div class="form-bottom">
+                <form role="form" action="" method="post" class="login-form">
+                    <div class="form-group">
+                        <label class="sr-only" for="form-username">Username</label>
+                        <input type="text" name="form-username" placeholder="Gebruikersnaam..." class="form-username form-control" id="form-username">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">email:</label>
-                    <div class="col-md-8">
-                        <input class="form-control" name="form-email" type="text" value="verander je emailadres">
+                    <div class="form-group">
+                        <label class="sr-only" for="form-email">Password</label>
+                        <input type="text" name="form-email" placeholder="email..." class="form-email form-control" id="form-email">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">wachtwoord:</label>
-                    <div class="col-md-8">
-                        <input class="form-control" name="form-password" type="password" value="wachtwoord">
+                    <div class="form-group">
+                        <label class="sr-only" for="form-password">Password</label>
+                        <input type="password" name="form-password" placeholder="wachtwoord..." class="form-password form-control" id="form-password">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">bevestig wachtwoord:</label>
-                    <div class="col-md-8">
-                        <input class="form-control" name="form-passwordconf" type="password" value="wachtwoord">
+                    <div class="form-group">
+                        <label class="sr-only" for="form-passwordconf">Password</label>
+                        <input type="password" name="form-passwordconf" placeholder="wachtwoord bevestigen..." class="form-passwordconf form-control" id="form-passwordconf">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                        <button type="submit" name="change" class="btn btn-primary">veranderen</button>
-                    </div>
-                </div>
-            </form>
+                    <button type="submit" name="change" class="btn">verander gegevens!</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

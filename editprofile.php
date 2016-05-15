@@ -6,11 +6,12 @@
  * Time: 09:31
  */
 session_start();
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['loggedIn'])){
+    echo("not set");
     header("Location:Login.php");
 }
-?>
-<!DOCTYPE html>
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,7 +22,7 @@ if(!isset($_SESSION['username'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>profielpagina</title>
+    <title>profielpagina editten</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -118,6 +119,12 @@ if(!isset($_SESSION['username'])){
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-md-3 control-label">email:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" value="verander je emailadres">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-3 control-label">wachtwoord:</label>
                     <div class="col-md-8">
                         <input class="form-control" type="password" value="wachtwoord">
@@ -132,7 +139,7 @@ if(!isset($_SESSION['username'])){
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <input type="button" class="btn btn-primary" value="Opslaan">
+                        <input type="button" class="btn btn-primary" value="veranderen">
                     </div>
                 </div>
             </form>

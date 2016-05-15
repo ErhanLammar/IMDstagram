@@ -5,12 +5,19 @@
  * Date: 23/04/16
  * Time: 09:31
  */
+include_once ("classes/Db.class.php");
+include_once ("classes/config.class.php");
+include_once ("classes/user.class.php");
+
 session_start();
+
 if(!isset($_SESSION['loggedIn'])){
     echo("not set");
     header("Location:Login.php");
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,11 +98,10 @@ if(!isset($_SESSION['loggedIn'])){
 <div class="container">
 
     <div class="row">
-
         <div class="col-lg-12">
-            <img class="profilepicpage pull-left" src="http://placehold.it/80x80"><h1 class="page-header">@BryanVerli</h1>
+            <h1 class="page-header">Persoonlijke pagina van <?php  echo ($_SESSION["loggedIn"])  ?> </h1>
         </div>
-        
+
          <div class="col-lg-12"><btn class="btn btn-primary">Volgen</btn></div>
 
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">

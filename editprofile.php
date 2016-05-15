@@ -1,4 +1,7 @@
 <?php
+include_once ("classes/Db.class.php");
+include_once ("classes/config.class.php");
+include_once ("classes/user.class.php");
 /*
  * Created by PhpStorm.
  * User: erhanlammar
@@ -9,6 +12,24 @@ session_start();
 if(!isset($_SESSION['loggedIn'])){
     echo("not set");
     header("Location:Login.php");
+}
+
+if(!empty($_POST['change'])){
+    
+    // todo: 1 form input velden ophalen
+    try{
+
+        $u = new User();
+        $u->Username = $_POST['form-username'];
+        $u->Email = $_POST['form-email'];
+        $u->Password = $_POST['form-password'];
+        $u->Passwordconfirmation = $_POST['form-passwordconf'];
+        $u->Update($_SESSION['loggedIn']);
+        $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='login.php'>login</a> pagina";
+    }
+    catch(exception $e){
+        $succes = $e->getMessage();
+    }
 }
 
 ?><!DOCTYPE html>
@@ -111,35 +132,35 @@ if(!isset($_SESSION['loggedIn'])){
             </div>
             <h3>Bewerk je persoonlijke gegevens</h3>
 
-            <form class="form-horizontal" role="form">
+            <form role="form" action="" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-md-3 control-label">Gebruikersnaam:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" value="verander je gebruikersnaam">
+                        <input class="form-control" name="form-username" type="text" value="verander je gebruikersnaam">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">email:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" value="verander je emailadres">
+                        <input class="form-control" name="form-email" type="text" value="verander je emailadres">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">wachtwoord:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="password" value="wachtwoord">
+                        <input class="form-control" name="form-password" type="password" value="wachtwoord">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">bevestig wachtwoord:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="password" value="wachtwoord">
+                        <input class="form-control" name="form-passwordconf" type="password" value="wachtwoord">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <input type="button" class="btn btn-primary" value="veranderen">
+                        <button type="submit" name="change" class="btn btn-primary">veranderen</button>
                     </div>
                 </div>
             </form>

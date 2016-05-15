@@ -93,7 +93,9 @@ if(!isset($_SESSION['loggedIn'])){
 <div class="container">
 
     <div class="row">
-
+        <div class="col-lg-12">
+            <h1 class="page-header">Welkom <?php  echo ($_SESSION["loggedIn"])  ?> </h1>
+        </div>
         <div class="col-lg-12">
             <h1 class="page-header">Latest Posts</h1>
         </div>

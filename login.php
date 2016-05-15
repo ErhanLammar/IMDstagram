@@ -3,7 +3,7 @@ include_once ("classes/Db.class.php");
 include_once ("classes/config.class.php");
 include_once ("classes/user.class.php");
 session_start();
-if( $users->loggingIn() ){ header('Location: homepage.php'); }
+//if( $users->loggingIn() ){ header('Location: homepage.php'); }
     
 if(isset($_POST['login'])){
     // todo: 1 form input velden ophalen

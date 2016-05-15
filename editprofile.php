@@ -1,13 +1,14 @@
 <?php
-include_once ("classes/Db.class.php");
-include_once ("classes/config.class.php");
-include_once ("classes/user.class.php");
 /*
  * Created by PhpStorm.
  * User: erhanlammar
  * Date: 23/04/16
  * Time: 09:31
  */
+include_once ("classes/Db.class.php");
+include_once ("classes/config.class.php");
+include_once ("classes/user.class.php");    
+    
 session_start();
 if(!isset($_SESSION['loggedIn'])){
     echo("not set");
@@ -110,7 +111,9 @@ if(!empty($_POST['change'])){
 
 <!-- Page Content -->
 <div class="container">
-    <h1>Edit Profile</h1>
+    <div class="col-lg-12">
+        <h1 class="page-header"> <?php  echo ($_SESSION["loggedIn"])  ?> bewerk hier je pagina </h1>
+    </div>
     <hr>
     <div class="row">
         <!-- left column -->

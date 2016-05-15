@@ -108,7 +108,10 @@ class User{
 
     public function signup(){
         if(!$this->checkEmail()){
-            throw new exception("Email is al geregistreerd");
+            throw new exception("Dit emailadres bestaat al neem een ander of ga naar login");
+        }
+        if(!$this->checkUsername()){
+            throw new exception("De username die u gekozen heeft bestaat al!!");
         }
         if(!$this->checkPasswordConfirmation()){
             throw new exception("De registratie is niet correct verlopen. Check alles nog eens");
@@ -149,10 +152,26 @@ class User{
 
         if( $stmt->rowCount() > 0 ){
             return false;
-            throw new exception( "Dit emailadres is al in gebruik!!" ) ;
+            throw new exception( "" ) ;
         }
         else{
 
+            return true;
+
+        }
+    }
+    public function checkUsername(){
+
+        $PDO = Db::getInstance();
+        $stmt = $PDO->prepare("SELECT * FROM users WHERE username= :username");
+        $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR);
+        $stmt->execute();
+
+        if( $stmt->rowCount() > 0 ){
+            return false;
+            throw new exception( "" ) ;
+        }
+        else{
             return true;
 
         }
@@ -203,13 +222,11 @@ class User{
             if(!$this->checkPasswordConfirmation()){
                 throw new exception("De update is niet correct verlopen. Check alles nog eens");
             }
-
             $stmt = $PDO->prepare("UPDATE users SET email= :email WHERE usersid = :usersid");
             $stmt->bindValue(":usersid", $userid, PDO::PARAM_INT );//update username met " " "
             $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR); //aleen email
             $stmt->execute();
             echo("email");
-
         }
         if (!empty($this->m_sPassword)){
 
@@ -223,10 +240,5 @@ class User{
             $stmt->execute();
 
         }
-
-
-
-
     }
-
 }

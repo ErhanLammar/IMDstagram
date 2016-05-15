@@ -2,10 +2,10 @@
 include_once ("classes/Db.class.php");
 include_once ("classes/config.class.php");
 include_once ("classes/user.class.php");
-require('include/config.php');
+//require('include/config.php');
 
 //if logged in redirect to members page
-//if( $users->is_logged_in() ){ header('Location: homepage.php'); }
+//if( $u->loggingIn() ){ header('Location: homepage.php'); }
 
 //if form has been submitted process it
 if(isset($_POST['register'])){
@@ -21,6 +21,7 @@ if(isset($_POST['register'])){
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->signup();
         $u->checkEmail();
+        $u->checkUsername();
         $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='login.php'>login</a> pagina";
     }
     catch(exception $e){

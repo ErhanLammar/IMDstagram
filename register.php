@@ -20,7 +20,7 @@ if(isset($_POST['register'])){
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->signup();
-        //$u->checkEmail();
+        $u->checkEmail();
         $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='login.php'>login</a> pagina";
     }
     catch(exception $e){

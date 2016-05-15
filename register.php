@@ -5,7 +5,7 @@ include_once ("classes/user.class.php");
 require('include/config.php');
 
 //if logged in redirect to members page
-if( $users->is_logged_in() ){ header('Location: homepage.php'); }
+//if( $users->is_logged_in() ){ header('Location: homepage.php'); }
 
 //if form has been submitted process it
 if(isset($_POST['register'])){

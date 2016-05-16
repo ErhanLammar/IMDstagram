@@ -9,7 +9,7 @@
 session_start();
 if(!isset($_SESSION['loggedIn'])){
     echo("not set");
-    header("Location:Login.php");
+    header("Location:index.php");
 }
 
 ?><!DOCTYPE html>
@@ -97,7 +97,7 @@ if(!isset($_SESSION['loggedIn'])){
             <h1 class="page-header">Welkom <?php  echo ($_SESSION["loggedIn"])  ?> </h1>
         </div>
         <div class="col-lg-12">
-            <h1 class="page-header">Latest Posts</h1>
+            <h1 class="page-header">De meest recente IMD-foto's</h1>
         </div>
 
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">

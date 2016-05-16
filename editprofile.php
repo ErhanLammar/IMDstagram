@@ -11,8 +11,10 @@ include_once ("classes/user.class.php");
 
 session_start();
 if(!isset($_SESSION['loggedIn'])){
-    echo("not set");
     header("Location:index.php");
+}
+if(isset($_POST['uploadimg'])){
+    move_uploaded_file($_FILES['file']['tmp_name'], "uploade_profileim/".$_FILES['file']['name'] );
 }
 if(!empty($_POST['update'])) {
 // todo: 1 form input velden ophalen
@@ -20,7 +22,7 @@ if(!empty($_POST['update'])) {
 
         $u = new User();
         $u->Username = $_POST['form-username'];
-        $u->Email = $_POST['form-email'];
+        $u->Email = $_POST['form-emailupdate'];
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->Update($_SESSION['loggedIn']);
@@ -29,11 +31,7 @@ if(!empty($_POST['update'])) {
         $succes = $e->getMessage();
     }
 }
-if(isset($_POST['uploadimg'])){
-    move_uploaded_file($_FILES['file']['tmp_name'], "uploade_profileim/".$_FILES['file']['name'] );
-    $conn = mysqli_connect("localhost", "root", "", "IMDstagram");
-    $query = mysqli_query($conn, "UPDATE users SET profileimage = '". $_FILES['file']['name']."'WHERE username = '". $_SESSION['loggedIn']."'");
-}
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -157,7 +155,7 @@ if(isset($_POST['uploadimg'])){
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-email">Password</label>
-                        <input type="text" name="form-email" placeholder="email..." class="form-email form-control" id="form-email">
+                        <input type="text" name="form-emailupdate" placeholder="email..." class="form-email form-control" id="form-email">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-password">Password</label>

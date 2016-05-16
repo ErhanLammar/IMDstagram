@@ -204,7 +204,7 @@ class User{
         }
     }
     public function Update($userid){
-
+        echo $userid;
         $PDO = Db::getInstance();
         if(!empty($this->m_sUsername) && !empty($this->m_sEmail) && !empty($this->m_sPassword) && !empty($this->m_sPasswordconfirmation)){
             if($this->m_sPassword == $this->m_sPasswordconfirmation){
@@ -218,18 +218,18 @@ class User{
                 $stmt->bindValue(":password", $this->m_sPassword, PDO::PARAM_STR);
                 if($stmt->execute()){
                     // success
-                    echo "je aanpassingen zijn doorgevoerd";
+                    throw new exception("Je aanpassingen zijn doorgevoerd");
                 }else{
                     // error
-                    echo "niet alles is correct ingevoerd";
+                    throw new exception("Je hebt ergens een fout ingevuld");
                 }
             }else{
                 // Mismatch password
-                echo "de passwoorden komen niet overeen";
+                throw new exception("Wachtwoorden komen niet overeen");
             }
         }else{
             // some values are not set
-            echo "sommige velden zijn niet ingevuld";
+            throw new exception("Je hebt enkele velden niet ingevuld");
         }
     }
 }

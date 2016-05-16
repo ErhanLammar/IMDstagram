@@ -14,8 +14,7 @@ if(!isset($_SESSION['loggedIn'])){
     echo("not set");
     header("Location:index.php");
 }
-if(!empty($_POST['change'])) {
-    echo "test 2";
+if(!empty($_POST['update'])) {
 // todo: 1 form input velden ophalen
     try {
 
@@ -25,8 +24,7 @@ if(!empty($_POST['change'])) {
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->Update($_SESSION['loggedIn']);
-        $u->profileImg($_SESSION['loggedIn']);
-        $succes = "Je gegevens zijn aangepast";
+        $succes = "Je profiel is aangepast";
     } catch (exception $e) {
         $succes = $e->getMessage();
     }
@@ -40,15 +38,13 @@ if(isset($_POST['uploadimg'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>profielpagina bewerken</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>profielpagina editten</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -106,6 +102,7 @@ if(isset($_POST['uploadimg'])){
                             <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
+                </form>
                     <!-- /.navbar-collapse -->
             </div>
         </div>
@@ -120,10 +117,9 @@ if(isset($_POST['uploadimg'])){
     <hr>
     <div class="row">
         <!-- left column -->
+        <form role="form" action="classes/user.class.php" method="post" enctype="multipart/form-data">
         <div class="col-md-3">
-            <form role="form" action="classes/uploadimg.class.php" method="post" enctype="multipart/form-data"></form>
             <div class="form-group">
-                <div class="text-center">
                     <?php
                     $conn = mysqli_connect("localhost", "root", "", "IMDstagram");
                     $query = mysqli_query($conn, "SELECT * FROM users WHERE username = '". $_SESSION['loggedIn']."'");
@@ -131,19 +127,18 @@ if(isset($_POST['uploadimg'])){
                         if ($row['profileimage'] == "") {
                             echo "<img src='//placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100' class='avatar img-circle' alt='avatar'>";
                         }else{
-                            echo "<img src 'uploaded_profileimg/".$row['profileimage']."' class='avatar' alt='profile_image'";
-                        } }
+                            echo "<img src='uploaded_profileimg/".$row['profileimage']."' class='avatar img-circle' alt='avatar'";
+                        }
+                    }
                     ?>
                     <h6>Upload een andere profielfoto</h6>
                     <input type="file" name="file" class="form-control">
                 </div>
-            </div>
             <div class="form-group">
-                <button type="submit" name="uploadimg" class="btn">upload nieuwe profielafbeelding!</button>
+                <button type="submit" name="uploadimg" class="btn">upload nieuwe profielafbeelding</button>
             </div>
-            </form>
         </div>
-
+        </form>
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
             <div class="alert alert-info alert-dismissable">
@@ -172,7 +167,7 @@ if(isset($_POST['uploadimg'])){
                         <label class="sr-only" for="form-passwordconf">Password</label>
                         <input type="password" name="form-passwordconf" placeholder="wachtwoord bevestigen..." class="form-passwordconf form-control" id="form-passwordconf">
                     </div>
-                    <button type="submit" name="change" class="btn">verander gegevens!</button>
+                    <input type="submit" name="update" class="btn" value="verander gegevens"/>
                 </form>
             </div>
         </div>
@@ -182,8 +177,6 @@ if(isset($_POST['uploadimg'])){
 <!-- Footer -->
 <footer class="navbar-inverse navbar-fixed-bottom">
 </footer>
-
-</div>
 <!-- /.container -->
 <div class="modal fade" id="uploadbox" role="dialog">
     <div class="modal-dialog">
@@ -192,7 +185,7 @@ if(isset($_POST['uploadimg'])){
                 <h4>Upload je foto</h4>
             </div>
             <div class="modal-body">
-                <form action="" method="post" >
+                <form method="post" >
 
 
                     <div class="form-group">
@@ -213,13 +206,12 @@ if(isset($_POST['uploadimg'])){
     </div>
 </div>
 <!-- End modal upload-->
-
 <div class="modal fade" id="instagramfoto" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <img class="img-responsive" src="http://placehold.it/400x400" alt="">
-                <form action="" method="post">
+                <form method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Reactie's</label>
                         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Een reactie toevoegen" name="reageren"/>
@@ -232,12 +224,9 @@ if(isset($_POST['uploadimg'])){
         </div>
     </div>
 </div>
-
 <!-- end modal photo -->
-
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 

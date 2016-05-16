@@ -94,7 +94,7 @@ if(!isset($_SESSION['loggedIn'])){
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Welkom <?php  echo ($_SESSION["loggedIn"])  ?> </h1>
+            <h1 class="page-header">Welkom <?php  echo $_SESSION["username"];   ?> </h1>
         </div>
         <div class="col-lg-12">
             <h1 class="page-header">De meest recente IMD-foto's</h1>

@@ -13,9 +13,7 @@ session_start();
 if(!isset($_SESSION['loggedIn'])){
     header("Location:index.php");
 }
-if(isset($_POST['uploadimg'])){
-    move_uploaded_file($_FILES['file']['tmp_name'], "uploade_profileim/".$_FILES['file']['name'] );
-}
+
 if(!empty($_POST['update'])) {
 // todo: 1 form input velden ophalen
     try {
@@ -30,6 +28,9 @@ if(!empty($_POST['update'])) {
     } catch (exception $e) {
         $succes = $e->getMessage();
     }
+}
+if(isset($_POST['uploadimg'])){
+    move_uploaded_file($_FILES['file']['tmp_name'], "uploade_profileim/".$_FILES['file']['name'] );
 }
 
 ?><!doctype html>
@@ -118,12 +119,13 @@ if(!empty($_POST['update'])) {
         <form role="form" action="classes/user.class.php" method="post" enctype="multipart/form-data">
         <div class="col-md-3">
             <div class="form-group">
+                <img src='//placehold.it/100x100' class='avatar img-circle' alt='avatar'>
                     <?php
                     $conn = mysqli_connect("localhost", "root", "", "IMDstagram");
                     $query = mysqli_query($conn, "SELECT * FROM users WHERE username = '". $_SESSION['loggedIn']."'");
                     while ($row = mysqli_fetch_assoc($query)){
                         if ($row['profileimage'] == "") {
-                            echo "<img src='//placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100' class='avatar img-circle' alt='avatar'>";
+                            echo "";
                         }else{
                             echo "<img src='uploaded_profileimg/".$row['profileimage']."' class='avatar img-circle' alt='avatar'";
                         }

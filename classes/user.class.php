@@ -194,6 +194,7 @@ class User{
                 if(password_verify($password, $hash)){
                     session_start();
                     $_SESSION["loggedIn"] = $result['usersid'];
+                    $_SESSION["username"] = $result['username'];
                     session_write_close();
                     return true;
                 }else{

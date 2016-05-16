@@ -31,7 +31,7 @@ if(!empty($_POST['update'])) {
         $succes = $e->getMessage();
     }
 }
-    
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -110,7 +110,7 @@ if(!empty($_POST['update'])) {
     <!-- Page Content -->
 <div class="container">
     <div class="col-lg-12">
-        <h1 class="page-header"> <?php  echo ($_SESSION["loggedIn"])  ?> bewerk hier je pagina </h1>
+        <h1 class="page-header"> <?php  echo $_SESSION["username"];   ?> bewerk hier je pagina </h1>
     </div>
     <hr>
     <div class="row">

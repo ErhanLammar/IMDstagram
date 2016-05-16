@@ -18,7 +18,7 @@ if(isset($_POST['login'])){
             
         }
         else{
-            echo("Password of username zijn niet correct!");
+            throw new exception("Password of username zijn niet correct!");
         }
     }
     catch(exception $e){
@@ -78,6 +78,12 @@ if(isset($_POST['login'])){
                         </div>
                         <div class="form-top-right">
                             <i class="fa fa-key"></i>
+                        </div>
+                        <div class="col-sm-8 col-sm-offset-2 alert  alert-success">
+                            <?php if(isset($succes)) {
+                                echo "<p> $succes</p>";
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="form-bottom">

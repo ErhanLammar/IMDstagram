@@ -194,7 +194,6 @@ class User{
                 if(password_verify($password, $hash)){
                     session_start();
                     $_SESSION["loggedIn"] = $result['usersid'];
-                    $_SESSION["loggedIn"] = $result ['username'];
                     session_write_close();
                     return true;
                 }else{
@@ -205,6 +204,7 @@ class User{
     }
     public function Update($userid){
         echo $userid;
+        echo " UPDATE users SET username= '" . $this->m_sUsername . "', email = '" . $this->m_sEmail . "', password = '" . $this->m_sPassword . "' WHERE usersid = '" . $userid . "'";
         $PDO = Db::getInstance();
         if(!empty($this->m_sUsername) && !empty($this->m_sEmail) && !empty($this->m_sPassword) && !empty($this->m_sPasswordconfirmation)){
             if($this->m_sPassword == $this->m_sPasswordconfirmation){
@@ -212,7 +212,7 @@ class User{
                 $this->m_sPassword = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
 
                 $stmt = $PDO->prepare("UPDATE users SET username= :username, email = :email, password = :password WHERE usersid = :usersid");
-                $stmt->bindValue(":usersid", $userid, PDO::PARAM_INT );
+                $stmt->bindValue(":usersid", $userid, PDO::PARAM_INT);
                 $stmt->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR);
                 $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR);
                 $stmt->bindValue(":password", $this->m_sPassword, PDO::PARAM_STR);

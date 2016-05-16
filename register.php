@@ -22,7 +22,7 @@ if(isset($_POST['register'])){
         $u->signup();
         $u->checkEmail();
         $u->checkUsername();
-        $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='login.php'>login</a> pagina";
+        $succes= "Je bent nu lid van IMDstagram ga naar onze <a href='index.php'>login</a> pagina";
     }
     catch(exception $e){
         $succes = $e->getMessage();
@@ -121,7 +121,7 @@ if(isset($_POST['register'])){
                     <div class="description">
                         <p>
                             Al lid van IMDstagram hier
-                            <a href="login.php"><strong>inloggen</strong></a>
+                            <a href="index.php"><strong>inloggen</strong></a>
                         </p>
                     </div>
                 </div>

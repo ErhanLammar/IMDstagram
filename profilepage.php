@@ -13,7 +13,7 @@ session_start();
 
 if(!isset($_SESSION['loggedIn'])){
     echo("not set");
-    header("Location:Login.php");
+    header("Location:index.php");
 }
 
 ?>
@@ -60,7 +60,7 @@ if(!isset($_SESSION['loggedIn'])){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">IMDStagram</a>
+            <a class="navbar-brand" href="homepage.php">IMDStagram</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

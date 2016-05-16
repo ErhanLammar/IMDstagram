@@ -1,24 +1,23 @@
 <?php
-/*
+/**
  * Created by PhpStorm.
  * User: erhanlammar
- * Date: 23/04/16
- * Time: 09:31
+ * Date: 16/05/16
+ * Time: 07:40
  */
 include_once ("classes/Db.class.php");
 include_once ("classes/config.class.php");
-include_once ("classes/user.class.php");    
-    
+include_once ("classes/user.class.php");
+
 session_start();
 if(!isset($_SESSION['loggedIn'])){
     echo("not set");
-    header("Location:Login.php");
+    header("Location:index.php");
 }
-
-if(!empty($_POST['change'])){
-
-    // todo: 1 form input velden ophalen
-    try{
+if(!empty($_POST['change'])) {
+    echo "test 2";
+// todo: 1 form input velden ophalen
+    try {
 
         $u = new User();
         $u->Username = $_POST['form-username'];
@@ -26,17 +25,22 @@ if(!empty($_POST['change'])){
         $u->Password = $_POST['form-password'];
         $u->Passwordconfirmation = $_POST['form-passwordconf'];
         $u->Update($_SESSION['loggedIn']);
-        $succes= "Je gegevens zijn aangepast";
-    }
-    catch(exception $e){
+        $u->profileImg($_SESSION['loggedIn']);
+        $succes = "Je gegevens zijn aangepast";
+    } catch (exception $e) {
         $succes = $e->getMessage();
     }
 }
-
-?><!DOCTYPE html>
+if(isset($_POST['uploadimg'])){
+    move_uploaded_file($_FILES['file']['tmp_name'], "uploade_profileim/".$_FILES['file']['name'] );
+    $conn = mysqli_connect("localhost", "root", "", "IMDstagram");
+    $query = mysqli_query($conn, "UPDATE users SET profileimage = '". $_FILES['file']['name']."'WHERE username = '". $_SESSION['loggedIn']."'");
+}
+?><!doctype html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,9 +65,7 @@ if(!empty($_POST['change'])){
     <![endif]-->
 
 </head>
-
 <body>
-
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -106,10 +108,11 @@ if(!empty($_POST['change'])){
                     </div>
                     <!-- /.navbar-collapse -->
             </div>
-            <!-- /.container -->
-</nav>
+        </div>
+    </div>
+</nav
 
-<!-- Page Content -->
+    <!-- Page Content -->
 <div class="container">
     <div class="col-lg-12">
         <h1 class="page-header"> <?php  echo ($_SESSION["loggedIn"])  ?> bewerk hier je pagina </h1>
@@ -118,12 +121,27 @@ if(!empty($_POST['change'])){
     <div class="row">
         <!-- left column -->
         <div class="col-md-3">
-            <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-                <h6>Upload a different photo...</h6>
-
-                <input type="file" class="form-control">
+            <form role="form" action="classes/uploadimg.class.php" method="post" enctype="multipart/form-data"></form>
+            <div class="form-group">
+                <div class="text-center">
+                    <?php
+                    $conn = mysqli_connect("localhost", "root", "", "IMDstagram");
+                    $query = mysqli_query($conn, "SELECT * FROM users WHERE username = '". $_SESSION['loggedIn']."'");
+                    while ($row = mysqli_fetch_assoc($query)){
+                        if ($row['profileimage'] == "") {
+                            echo "<img src='//placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100' class='avatar img-circle' alt='avatar'>";
+                        }else{
+                            echo "<img src 'uploaded_profileimg/".$row['profileimage']."' class='avatar' alt='profile_image'";
+                        } }
+                    ?>
+                    <h6>Upload een andere profielfoto</h6>
+                    <input type="file" name="file" class="form-control">
+                </div>
             </div>
+            <div class="form-group">
+                <button type="submit" name="uploadimg" class="btn">upload nieuwe profielafbeelding!</button>
+            </div>
+            </form>
         </div>
 
         <!-- edit form column -->
@@ -137,7 +155,7 @@ if(!empty($_POST['change'])){
             <h3>Bewerk je persoonlijke gegevens</h3>
 
             <div class="form-bottom">
-                <form role="form" action="" method="post" class="login-form">
+                <form role="form" action="" method="post" class="login-form" >
                     <div class="form-group">
                         <label class="sr-only" for="form-username">Username</label>
                         <input type="text" name="form-username" placeholder="Gebruikersnaam..." class="form-username form-control" id="form-username">
@@ -160,9 +178,10 @@ if(!empty($_POST['change'])){
         </div>
     </div>
 </div>
-    <!-- Footer -->
-    <footer class="navbar-inverse navbar-fixed-bottom">
-    </footer>
+
+<!-- Footer -->
+<footer class="navbar-inverse navbar-fixed-bottom">
+</footer>
 
 </div>
 <!-- /.container -->
@@ -173,7 +192,7 @@ if(!empty($_POST['change'])){
                 <h4>Upload je foto</h4>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="" method="post" >
 
 
                     <div class="form-group">
@@ -222,7 +241,6 @@ if(!empty($_POST['change'])){
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
+
 </body>
-
 </html>
-

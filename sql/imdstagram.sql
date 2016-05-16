@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 14, 2016 at 10:49 AM
+-- Generation Time: May 16, 2016 at 05:12 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -80,11 +80,25 @@ CREATE TABLE `posts` (
 
 CREATE TABLE `users` (
   `usersid` int(11) NOT NULL,
-  `username` int(11) NOT NULL,
-  `fullname` int(11) NOT NULL,
-  `email` int(11) NOT NULL,
-  `password` int(11) NOT NULL
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `profileimage` varchar(350) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`usersid`, `firstname`, `lastname`, `username`, `email`, `password`, `profileimage`) VALUES
+(1, 'Erhan', 'Lammar', 'erhan', 'erhan@erhanlammar.be', '$2y$12$3Ueoni9inpfDNjDCtR4Byu5b8nb48ECfph4pP9x1M9u8vyk7yetUG', ''),
+(2, 'Jacky', 'Lafon', 'Lafon', 'J.lafon@gmail.com', '$2y$12$oqtQfCZXFB.SDvvR3iG7V.PFthI05IxNnbbGaXahCQPfmlPx2Ocv.', ''),
+(3, 'Erhan', 'Lammar', 'elammar', 'erhan@lammar.be', '$2y$12$10twnc846SW1aPLzvvtgNeXcOx5TAwiNBWL/HrClluic6u0XoQPOm', ''),
+(4, 'Erhan', 'Lammar', 'lammar', 'erhan.lammar@gmail.com', '$2y$12$h1PJFve3gHw5B0VgJ1/FPuyedx0zINhoUnCJaIaheiduMlkF03QDO', ''),
+(5, 'Lisa', 'Deroose', 'Lisa', 'lisa@deroose.be', '$2y$12$zSE.5JCFL3beNypGlBzqBOtOc23/j19V8IxiERWXu3ouMKUizNjxK', ''),
+(6, 'Johan ', 'Vandelanoite', 'Mieke', 'J.vandelanoite@gmail.com', '$2y$12$Sl4V.B8wxaACSFsf6caHceWPhxGeHFOEm9Vmw4MzXP0RSn8hUsD52', '');
 
 --
 -- Indexes for dumped tables
@@ -148,7 +162,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usersid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `usersid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
